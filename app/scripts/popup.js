@@ -31,7 +31,8 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    const storedHostList = (await chromeUtil.getHostsFromStrage()).hosts;
+    let storedHostList = (await chromeUtil.getHostsFromStrage()).hosts;
+    if (!storedHostList) storedHostList = [];
     this.setState({ hostList: storedHostList });
   }
 
